@@ -15,6 +15,8 @@ npm run hot-dev-server
 # Build
 npm run production
 ```
+### Question
+Pour toutes questions Pierre <pierre.fontas@ws-interactive.fr> et David <david.mottet@ws-interactive.fr>
 
 [Git]: <https://github.com/davidmottet/test-ws-interactive>
 [React]: <https://facebook.github.io/react/>
