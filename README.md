@@ -16,6 +16,6 @@ npm run hot-dev-server
 npm run production
 ```
 
-[Git]: <https://github.com/joemccann/dillinger>
+[Git]: <https://github.com/davidmottet/test-ws-interactive>
 [React]: <https://facebook.github.io/react/>
 [Flux]: <https://facebook.github.io/flux/>
