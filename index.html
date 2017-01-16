@@ -1,7 +1,16 @@
-module.exports = require("./make-webpack-config")({
-    devServer: true,
-    hotComponents: true,
-    devtool: "eval",
-    debug: true,
-    port: 3453
-});
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+	
+		<script src="/build/vendors.js" type="text/javascript"></script>
+		<script src="/build/bundle.js" type="text/javascript"></script>
+
+		<!--
+			<script src="http://localhost:3453/_assets/vendors.js" type="text/javascript"></script>
+			<script src="http://localhost:3453/_assets/bundle.js" type="text/javascript"></script>
+		-->
+	</body>
+</html>
