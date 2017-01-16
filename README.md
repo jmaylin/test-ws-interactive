@@ -1,5 +1,5 @@
 # Test Ws Interactive
-### Consigne
+##### Consigne
 Sur une page Internet, réalisez une génération aléatoire de 500 cercles.
 Chaque cercle (Cx) réalisé doit avoir son enfant (Cx’) placé par rapport à un point de symétrie au centre de l’écran (1000 cercles au total). À chaque fois qu’on ajoute un nouveau cercle (Cx) on augmente le ton de la couleur utilisée de 1. Chaque cercle enfant (Cx’) est de la même couleur que son parent (Cx).
 À chaque clique sur la page, tous les cercles doivent tourner de 30° autour du curseur. Ajoutez une animation de déplacement.
@@ -7,7 +7,7 @@ Chaque cercle (Cx) réalisé doit avoir son enfant (Cx’) placé par rapport à
 Modifiez l’effet du clic sur la page, pour que seulement les cercles dans un rayon de 200px tournent autour du curseur.
 ### Installation
 Pour réaliser cet exercice, cloner le dépôt [Git] pour récupérer la base Webpack et utiliser [React] avec une architecture [Flux].
-#### Utilisation
+##### Utilisation
 ```bash
 # Start for development
 npm run hot-dev-server
