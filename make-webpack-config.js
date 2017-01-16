@@ -17,10 +17,7 @@ module.exports = function(options) {
         'flux',
         'keymirror',
         'object-assign',
-        'slug',
-        'moment',
-        'pikaday',
-        'flow.js'
+        'slug'
       ]
     };
     var loaders = options.hotComponents ? ['react-hot-loader', 'babel-loader'] : ['babel-loader'];
@@ -39,7 +36,7 @@ module.exports = function(options) {
     var extensions = ['', '.web.js', '.js', '.jsx'];
     var root = path.join(__dirname, 'scripts');
     var publicPath = options.devServer ?
-    'http://serenity:'+options.port+'/_assets/' :
+    'http://localhost:'+options.port+'/_assets/' :
     '';
     var output = {
         path: path.join(__dirname, 'build'),
@@ -80,10 +77,6 @@ module.exports = function(options) {
     else {
       plugins.push(
       new webpack.DefinePlugin({
-                'process.env': {
-                    NODE_ENV: JSON.stringify('dev')
-                },
-                PUBLIC_URL: JSON.stringify('https://spot-adfs2.occterra.net')
             })
       );
     }
@@ -95,8 +88,7 @@ module.exports = function(options) {
         module: {
             loaders: [
               { test: /\.js$/, loaders: loaders, exclude: /node_modules/ }
-            ],
-            noParse: [path.join(__dirname, "node_modules/openlayers/dist/ol.js")]
+            ]
         },
         devtool: options.devtool,
         debug: options.debug,
