@@ -9,6 +9,9 @@ Modifiez l’effet du clic sur la page, pour que seulement les cercles dans un r
 Pour réaliser cet exercice, cloner le dépôt [Git] pour récupérer la base Webpack et utiliser [React] avec une architecture [Flux].
 ### Utilisation
 ```bash
+# Install
+npm install
+
 # Start for development
 npm run hot-dev-server
 
