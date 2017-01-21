@@ -87,7 +87,15 @@ module.exports = function(options) {
         target: 'web',
         module: {
             loaders: [
-              { test: /\.js$/, loaders: loaders, exclude: /node_modules/ }
+              { test: /\.js$/, loaders: loaders, exclude: /node_modules/ },
+              {
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                loader: 'babel',
+                query: {
+                  presets:['es2015', 'react']
+                }
+              }
             ]
         },
         devtool: options.devtool,
