@@ -9,7 +9,7 @@
     "build": "webpack --config webpack-dev.config.js --progress --profile --colors",
     "production": "webpack --config webpack-prod.config.js --progress --profile --colors",
     "start": "node server.js",
-    "hot-dev-server": "webpack-dev-server --config webpack-hot-dev-server.config.js --hot --progress --colors --host localhost --inline"
+    "hot-dev-server": "webpack-dev-server --config webpack-hot-dev-server.config.js --progress --colors --host localhost --inline"
   },
   "dependencies": {
     "babel-loader": "4.2.0",
