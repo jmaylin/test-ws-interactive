@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 var NyanProgressPlugin = require('nyan-progress-webpack-plugin');
 
 module.exports = function(options) {
@@ -49,6 +50,7 @@ module.exports = function(options) {
     };
 
     var plugins = [
+        new LodashModuleReplacementPlugin,
         new CommonsChunkPlugin('vendors', 'vendors.js'),
         new webpack.PrefetchPlugin('react'),
         new webpack.PrefetchPlugin('react/lib/ReactComponentBrowserEnvironment'),
@@ -93,6 +95,7 @@ module.exports = function(options) {
                 exclude: /node_modules/,
                 loader: 'babel',
                 query: {
+                  plugins: ['lodash'],
                   presets:['es2015', 'react']
                 }
               },
