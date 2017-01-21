@@ -1,5 +1,12 @@
-/* global applicationConfiguration*/
-/*eslint-disable no-unused-vars*/
-var React = require('react');
+import React, { Component } from 'react';
 
-console.log('dfkjhgkjdfhgkjdfh')
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <h1>Hello world</h1>
+      </div>);
+  }
+}
+
+React.render(<App />, document.getElementById('app'));
