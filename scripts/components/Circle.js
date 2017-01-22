@@ -5,6 +5,8 @@ import AppStore from '../stores/AppStore';
 
 import styles from './Circle.scss';
 
+const areaOfEffect = 200;
+
 class Circle extends Component {
   constructor(props) {
     super(props);
@@ -44,6 +46,16 @@ class Circle extends Component {
     // }, 500);
   }
 
+  isInAreaOfEffect() {
+    const { coordinates } = this.props;
+    const { gravityCenter } = this.state;
+
+    const fromGravityCenterToHere = Math.sqrt(
+      Math.pow((gravityCenter.x-coordinates.x),2) + Math.pow((gravityCenter.y-coordinates.y),2)
+    );
+    return fromGravityCenterToHere <= areaOfEffect;
+  }
+
   getAnimateTransform(coordinates) {
     // TODO run the animation once, each time it's injected
     return (
@@ -71,7 +83,9 @@ class Circle extends Component {
 
     return (
       <circle cx={x} cy={y} r={radius} fill={`hsl(${hue}, 50%, 50%)`}>
-        { gravityCenter ? this.getAnimateTransform(gravityCenter) : null }
+        { gravityCenter && this.isInAreaOfEffect()
+          ? this.getAnimateTransform(gravityCenter)
+          : null }
       </circle>
     );
   }
