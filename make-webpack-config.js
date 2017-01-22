@@ -21,7 +21,7 @@ module.exports = function(options) {
         'slug'
       ]
     };
-    var loaders = options.hotComponents ? ['react-hot-loader', 'babel-loader'] : ['babel-loader'];
+    // var loaders = options.hotComponents ? ['react-hot-loader', 'babel-loader'] : ['babel-loader'];
 
     var alias = {
       'jquery.ui.widget': 'blueimp-file-upload/js/vendor/jquery.ui.widget',
@@ -53,7 +53,7 @@ module.exports = function(options) {
         new LodashModuleReplacementPlugin,
         new CommonsChunkPlugin('vendors', 'vendors.js'),
         new webpack.PrefetchPlugin('react'),
-        new webpack.PrefetchPlugin('react/lib/ReactComponentBrowserEnvironment'),
+        // new webpack.PrefetchPlugin('react/lib/ReactComponentBrowserEnvironment'),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         new NyanProgressPlugin()
@@ -89,7 +89,7 @@ module.exports = function(options) {
         target: 'web',
         module: {
             loaders: [
-              { test: /\.js$/, loaders: loaders, exclude: /node_modules/ },
+              // { test: /\.js$/, loaders: loaders, exclude: /node_modules/ },
               {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
