@@ -1,8 +1,32 @@
 import React, { Component, PropTypes } from 'react';
 
+import AppStore from '../stores/AppStore';
+
 import styles from './Circle.scss';
 
 class Circle extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      gravityCenter: AppStore.getGravityCenter()
+    };
+    this.newGravityCenter = this.newGravityCenter.bind(this);
+  }
+
+  componentDidMount() {
+    AppStore.addChangeListener(this.newGravityCenter);
+  }
+
+  componentWillUnmount() {
+    AppStore.removeChangeListener(this.newGravityCenter);
+  }
+
+  newGravityCenter() {
+    this.state = {
+      gravityCenter: AppStore.getGravityCenter()
+    };
+  }
+
   render() {
     const { radius, hue, coordinates } = this.props;
     return (<circle

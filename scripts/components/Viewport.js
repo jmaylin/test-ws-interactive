@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { random } from 'lodash';
 
+import AppActions from '../actions/AppActions';
 import Circle from './Circle';
 
 import './Viewport.scss';
@@ -14,7 +15,6 @@ class Viewport extends Component {
       width: 0,
       height: 0
     };
-    this.numberOfCirclesGenerated = 0;
   }
 
   generateCircles(numberOfCircles) {
@@ -25,6 +25,7 @@ class Viewport extends Component {
         key={i}
         coordinates={this.getRandomCoordinates()}
       />);
+      // TODO generate ghost circle (using viewport center)
     }
     return circles;
   }
@@ -36,16 +37,24 @@ class Viewport extends Component {
     };
   }
 
+  setGravityCenter(e) {
+    AppActions.setGravityCenter({
+      x: e.screenX,
+      y: e.screenY
+    });
+  }
+
   componentWillMount() {
     this.setState({
       width: window.innerWidth,
       height: window.innerHeight
     })
+    // TODO calculate viewport center
   }
 
   render() {
     return (
-      <svg className="viewportWrapper" viewBox={`0 0 ${this.state.width} ${this.state.height}`}>
+      <svg className="viewportWrapper" viewBox={`0 0 ${this.state.width} ${this.state.height}`} onClick={this.setGravityCenter}>
         {this.generateCircles(numberOfCircles)}
       </svg>
     );

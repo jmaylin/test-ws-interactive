@@ -1,0 +1,1 @@
+export const SET_GRAVITY_CENTER = 'SET_GRAVITY_CENTER';
