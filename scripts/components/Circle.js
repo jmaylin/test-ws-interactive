@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { uniqueId } from 'lodash';
 
 import AppStore from '../stores/AppStore';
 
@@ -8,9 +9,13 @@ class Circle extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gravityCenter: AppStore.getGravityCenter()
+      gravityCenter: null,
+      x: props.coordinates.x,
+      y: props.coordinates.y
     };
+
     this.newGravityCenter = this.newGravityCenter.bind(this);
+    this.generateCircle = this.generateCircle.bind(this);
   }
 
   componentDidMount() {
@@ -22,19 +27,53 @@ class Circle extends Component {
   }
 
   newGravityCenter() {
-    this.state = {
-      gravityCenter: AppStore.getGravityCenter()
-    };
+    const gravityCenter = AppStore.getGravityCenter();
+
+    this.setState({
+      gravityCenter,
+    });
+
+    // TODO set the new position when the animation is completed
+
+    // setTimeout(() => {
+    //   this.setState({
+    //     gravityCenter: null,
+    //     x: 0, // TODO new position ?
+    //     y: 0  // TODO new position ?
+    //   });
+    // }, 500);
+  }
+
+  getAnimateTransform(coordinates) {
+    // TODO run the animation once, each time it's injected
+    return (
+      <animateTransform
+        attributeType="xml"
+        attributeName="transform"
+        type="rotate"
+        fill="freeze"
+        from={`0 ${coordinates.x} ${coordinates.y}`}
+        to={`30 ${coordinates.x} ${coordinates.y}`}
+        dur="500ms"
+        repeatCount="indefinite"/>);
+  }
+
+  generateCircle() {
+    return (
+      <circle cx={this.coordinates.x} cy={this.coordinates.y} r={radius} fill={`hsl(${hue}, 50%, 50%)`}>
+        { this.gravityCenter ? this.getAnimateTransform(this.gravityCenter) : null }
+      </circle>);
   }
 
   render() {
     const { radius, hue, coordinates } = this.props;
-    return (<circle
-      cx={coordinates.x}
-      cy={coordinates.y}
-      r={radius}
-      fill={`hsl(${hue}, 50%, 50%)`}
-    />);
+    const { x, y, gravityCenter } = this.state;
+
+    return (
+      <circle cx={x} cy={y} r={radius} fill={`hsl(${hue}, 50%, 50%)`}>
+        { gravityCenter ? this.getAnimateTransform(gravityCenter) : null }
+      </circle>
+    );
   }
 }
 
