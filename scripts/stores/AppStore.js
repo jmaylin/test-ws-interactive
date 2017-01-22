@@ -8,7 +8,7 @@ const CHANGE_EVENT = 'change';
 
 // Set max number of listeners
 // Src: http://stackoverflow.com/a/26176922/962893
-EventEmitter.prototype._maxListeners = 500;
+EventEmitter.prototype._maxListeners = 1000;
 
 let gravityCenter = { x: 0, y: 0 };
 

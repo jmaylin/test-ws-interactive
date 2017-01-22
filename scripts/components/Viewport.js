@@ -29,22 +29,36 @@ class Viewport extends Component {
     }
     this.circlesAlreadyGenerated = true;
     this.circles = [];
-    for (var i = 0; i < numberOfCircles; i++) {
+    for (let i = 0; i < numberOfCircles; i++) {
+      const randomCoordinates = this.getRandomCoordinates();
+      // Cx
       this.circles.push(<Circle
         hue={i/2}
-        key={i}
-        coordinates={this.getRandomCoordinates()}
+        key={`a${i}`}
+        coordinates={randomCoordinates}
       />);
-      // TODO generate ghost circle (using viewport center)
+      // Cx'
+      this.circles.push(<Circle
+        hue={i/2}
+        key={`b${i}`}
+        coordinates={this.getReversedCoordinates(randomCoordinates)}
+      />);
     }
     return this.circles;
   }
 
-  getRandomCoordinates(maxX, maxY) {
+  getRandomCoordinates() {
     return {
       x: random(this.state.width),
       y: random(this.state.height)
     };
+  }
+
+  getReversedCoordinates(coordinates) {
+    return {
+      x: this.state.width - coordinates.x,
+      y: this.state.height - coordinates.y
+    }
   }
 
   setGravityCenter(e) {
@@ -69,7 +83,6 @@ class Viewport extends Component {
         y: window.innerHeight /2
       }
     })
-    // TODO calculate viewport center
   }
 
   render() {
